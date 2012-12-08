@@ -22,13 +22,16 @@ void setup(void){
 
 void printTemperature(DeviceAddress deviceAddress){
   float tempC = sensors.getTempC(deviceAddress);
-  Serial.print("\nTemp C: ");
-  Serial.print(tempC);
+  Serial.print("Temp C: ");
+  Serial.println(tempC);
 }
 
 void loop(void){ 
   sensors.requestTemperatures();
   printTemperature(temp0);
-  printTemperature(temp1);  
+  printTemperature(temp1);
+  int value = analogRead(A0);
+  float c = (value/50.0F) + 50;
+  Serial.println(c);
 }
 
